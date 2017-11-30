@@ -1,0 +1,15 @@
+---
+- hosts: '{{ _hosts }}'
+  # configuration
+  vars_files:
+    - vars/main.yml
+  gather_facts: '{{ _gather_facts }}'
+  connection: '{{ _connection }}'
+  # tasks
+  roles:
+    - dependencies
+    - python3
+    - nvim
+  tasks:
+    - name: roles tasks done
+      shell: echo 'after roles tasks'

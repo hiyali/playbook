@@ -1,0 +1,12 @@
+# mac os
+- name: install dependencies for {{ ansible_distribution }}
+  become: yes
+  package: "name={{ item }} state=present"
+  with_items:
+    - curl
+    - git
+    - python-setuptools
+  shell: echo "used to ansible_pkg_mgr {{ ansible_pkg_mgr }}"
+
+-name: installing brew
+  shell: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"

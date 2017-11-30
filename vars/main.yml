@@ -1,0 +1,12 @@
+---
+# this would be vars/main.yml
+
+# hosts
+_hosts: localhost
+_connection: local
+
+# customize your user name
+_username: salamhiyali
+
+# configs
+_gather_facts: yes

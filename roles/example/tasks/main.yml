@@ -1,0 +1,5 @@
+# included in the play's tasks
+---
+# possibly saved as roles/example/tasks/main.yml
+- name: install and configuration {{ username }}
+  shell: echo "Hello {{ username }}"

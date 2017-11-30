@@ -1,0 +1,18 @@
+---
+# possibly saved as roles/nvim/tasks/main.yml
+- name: Install nvim and configuration
+  # shell: echo "Hello {{ username }}"
+  shell: brew install "{{ item }}"
+  with_items:
+    - neovim
+  ignore_errors: yes
+
+- name: Install python-neovim
+  shell: pip3 install neovim
+
+- name: Download configuration repository
+  # vars_files:
+  #   - main.yml
+  git:
+    repo: "{{ _nvim_config_repo }}"
+    dest: "~/.config/nvim2"

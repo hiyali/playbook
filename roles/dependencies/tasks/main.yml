@@ -1,0 +1,4 @@
+---
+# possibly saved as roles/dependencies/tasks/main.yml
+- name: install dependencies for {{ ansible_distribution }}
+  include_tasks: "{{ ansible_os_family }}.yml"

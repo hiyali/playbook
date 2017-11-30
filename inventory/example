@@ -1,0 +1,13 @@
+# included in the play's hosts that do not be need with a given path
+[localhost]
+127.0.0.1
+
+[webservers]
+www[01:50].example.com
+
+[databases]
+db-[a:f].example.com
+
+[targets]
+other1.example.com     ansible_connection=ssh        ansible_ssh_user=mpdehaan
+other2.example.com     ansible_connection=ssh        ansible_ssh_user=mdehaan

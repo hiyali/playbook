@@ -1,0 +1,17 @@
+
+- name: Check to see if pip is already installed
+  command: "pip --version"
+  ignore_errors: true
+  changed_when: false # read-only task
+  check_mode: no
+  register: pip_is_installed
+
+- block:
+
+  - name: Install pip
+    package: "name=python3-pip state=present"
+    become: yes
+
+  # - name:
+
+  when: pip_is_installed.rc != 0

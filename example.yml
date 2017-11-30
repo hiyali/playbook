@@ -1,0 +1,25 @@
+# run with ansible-playbook example.yml
+---
+- hosts: '{{ _hosts }}'
+  # configuration
+  vars_files:
+    - vars/main.yml
+  gather_facts: '{{ _gather_facts }}'
+  connection: '{{ _connection }}'
+  # tasks
+  pre_tasks:
+    - name: 'Hello {{ _username }}, let`s get started'
+      shell: echo 'before roles pre_tasks'
+    # - name: retrieve the list of role directories
+    #   command: ls roles/
+    #   register: role_dirs
+  roles:
+    - example
+    # - role: nvim
+    # - { role: 'git+https://github.com/hiyali/ansible-playbook,,nvim' }
+    # - role: '{{ item }}'
+    #   with_items: '{{ role_dirs.stdout_lines }}' # same as with_items: role_dirs.stdout.split()
+  tasks:
+    - name: Done
+      shell: echo 'Done!'
+    # - msg: Done!

@@ -1,0 +1,54 @@
+---
+
+- name: Update apt repos
+  become: yes
+  apt_repository:
+    repo: '{{ item }}'
+    state: present
+    update_cache: yes
+  with_items:
+    - ppa:ubuntu-toolchain-r/test
+    - ppa:jonathonf/python-3.6
+
+# Updating C compilers to 4.9 which isrequired by certain python3.6 packages
+- name: Install essential packages
+  become: yes
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+  with_items:
+    - build-essential
+    - gcc-4.9
+    - cpp-4.9
+    - g++-4.9
+
+- name: Remove old compilers executables
+  file:
+    state: absent
+    path: "{{ item }}"
+  with_items:
+    - /usr/bin/gcc
+    - /usr/bin/x86_64-linux-gnu-gcc
+    - /usr/bin/cpp
+
+- name: Add new links
+  file:
+    src: '{{ item.src }}'
+    dest: '{{ item.dest }}'
+    state: link
+  with_items:
+    - src: /usr/bin/gcc-4.9
+      dest: /usr/bin/x86_64-linux-gnu-gcc
+    - src: /usr/bin/gcc-4.9
+      dest: /usr/bin/gcc
+    - src: /usr/bin/cpp-4.9
+      dest: /usr/bin/cpp
+
+- name: Install Python 3.6
+  become: yes
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+  with_items:
+    - python3.6
+    - python3.6-dev

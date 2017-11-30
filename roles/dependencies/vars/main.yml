@@ -1,0 +1,4 @@
+---
+# possibly saved as roles/dependencies/vars/main.yml
+# required
+_gather_facts: yes

@@ -1,0 +1,5 @@
+# ansible config
+# priority: 1
+
+# [defaults]
+# callback_plugins = plugins/human_log.py

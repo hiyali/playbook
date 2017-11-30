@@ -1,0 +1,4 @@
+# included in the play's variables with low priority
+---
+# possibly saved as roles/example/defaults/main.yml
+username: salamhiyali

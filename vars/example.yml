@@ -1,0 +1,6 @@
+# included in the play's variables that do not be need with a given path
+---
+# this would be vars/exmaple.yml
+
+# some varbs
+_foo: bar

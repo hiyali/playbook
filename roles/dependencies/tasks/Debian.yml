@@ -1,0 +1,19 @@
+# debian, ubuntu
+- name: install dependencies for {{ ansible_distribution }}
+  become: yes
+  package: "name={{ item }} state=present"
+  with_items:
+    - build-essential
+    - curl
+    - file
+    - git
+    - python-setuptools
+  shell: echo "used to ansible_pkg_mgr {{ ansible_pkg_mgr }}"
+
+- name: install brew
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+
+- name: setting brew env PATH
+  shell: test -d ~/.linuxbrew && PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
+  shell: test -d /home/linuxbrew/.linuxbrew && PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
+  shell: echo "export PATH='$(brew --prefix)/bin:$(brew --prefix)/sbin'":'"$PATH"' >>~/.profile
