@@ -19,7 +19,7 @@ You can change
 
 ## Todo
 
-* [ ] dependencies
+* [ ] env
   * [x] git
   * [x] curl
   * [x] python3
@@ -31,7 +31,7 @@ You can change
   * [ ] nginx
   * [ ] docker
   * [ ] i3-wm
-* [ ] other things
+* [ ] other
   * [ ] Travis
   * [ ] CircleCI
   * [ ] Readme
